@@ -61,7 +61,6 @@ protected:
 
     // Protected data members
     std::string     m_name;         //!< Name
-    std::vector<GCTAOnOffObservation*> m_obs;
 
 };
 

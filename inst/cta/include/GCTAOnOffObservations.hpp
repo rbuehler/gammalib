@@ -29,6 +29,7 @@
 
 /* __ Includes ___________________________________________________________ */
 #include <string>
+#include <vector>
 #include "GBase.hpp"
 
 
@@ -61,6 +62,8 @@ protected:
 
     // Protected data members
     std::string     m_name;          //!< Name
+    std::vector<GCTAOnOffObservation*> m_obs;
+
 };
 
 #endif /* GCTAOnOffObservations_HPP */
