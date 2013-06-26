@@ -36,7 +36,9 @@ sources = src/GCTASupport.cpp \
           src/GCTAModelRadialPolynom.cpp \
           src/GCTAModelRadialProfile.cpp \
           src/GCTAModelRadialAcceptance.cpp \
-          src/GCTADir.cpp
+          src/GCTADir.cpp \
+	  src/GCTAOnOffObservations.cpp \
+	  src/GCTAOnOffObservation.cpp
 
 # Define headers to be installed
 pkginclude_HEADERS = include/GCTAException.hpp \
@@ -66,7 +68,9 @@ pkginclude_HEADERS = include/GCTAException.hpp \
                      include/GCTAModelRadialProfile.hpp \
                      include/GCTAModelRadialAcceptance.hpp \
                      include/GCTADir.hpp \
-                     include/GCTALib.hpp
+                     include/GCTALib.hpp \
+		     include/GCTAOnOffObservations.hpp \
+	   	     include/GCTAOnOffObservation.hpp 
 
 # Calibration files to distribute
 irfs = caldb/kb_A_50h_v3.dat \
