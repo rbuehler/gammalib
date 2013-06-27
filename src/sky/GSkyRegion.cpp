@@ -30,6 +30,7 @@
 #endif
 #include <vector>
 #include <string>
+
 #include "GSkyRegion.hpp"
 
 /* __ Method name definitions ____________________________________________ */
