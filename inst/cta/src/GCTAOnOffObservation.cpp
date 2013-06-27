@@ -186,7 +186,11 @@ void GCTAOnOffObservation::init_members(void)
 {
     // Initialise members
     m_name.clear();
-  
+    m_id.clear();
+    m_instrument = "CTA";
+    m_spec_on.clear();
+    m_spec_off.clear();
+
     // Return
     return;
 }
@@ -197,14 +201,19 @@ void GCTAOnOffObservation::init_members(void)
  *
  * @param[in] c Object.
  ***************************************************************************/
-void GCTAOnOffObservation::copy_members(const GCTAOnOffObservation& c)
+void GCTAOnOffObservation::copy_members(const GCTAOnOffObservation& obs)
 {
     // Copy attributes
-    m_name = c.m_name;
+    m_name = obs.m_name;
+    m_id = obs.m_id;
+    m_instrument = obs.m_instrument;
+    m_spec_on = obs.m_spec_on;
+    m_spec_off = obs.m_spec_off;
     
     // Return
     return;
 }
+
 
 
 /***********************************************************************//**
