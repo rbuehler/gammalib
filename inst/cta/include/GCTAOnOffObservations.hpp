@@ -24,21 +24,23 @@
  * @author Chia-Chun Lu & Christoph Deil
  */
 
-#ifndef GCTAOnOffObservations_HPP
-#define GCTAOnOffObservations_HPP
+#ifndef GCTAONOFFOBSERVATIONS_HPP
+#define GCTAONOFFOBSERVATIONS_HPP
 
 /* __ Includes ___________________________________________________________ */
 #include <string>
 #include <vector>
-#include "GBase.hpp"
-
+#include "GContainer.hpp"
+#include "GObservations.hpp"
+#include "GEbounds.hpp"
+#include "GCTAOnOffObservation.hpp"
 
 /***********************************************************************//**
  * @class GCTAOnOffObservations
  *
  * @brief Container of CTA OnOff observation
  ***************************************************************************/
-class GCTAOnOffObservations : public GBase {
+class GCTAOnOffObservations : public GContainer {
 
 public:
     // Constructors and destructors
@@ -48,17 +50,34 @@ public:
  
     // Operators
     GCTAOnOffObservations& operator= (const GCTAOnOffObservations& c);
+    GCTAOnOffObservation*       operator[](const int& index);
+    const GCTAOnOffObservation* operator[](const int& index) const;
 
     // Methods
     void        clear(void);
     GCTAOnOffObservations*     clone(void) const;
-    std::string print(const GChatter& chatter) const;
+    GCTAOnOffObservation*       at(const int& index);
+    const GCTAOnOffObservation* at(const int& index) const;
+    std::string         print(const GChatter& chatter) const;
+    int                 size(void) const;
+    bool                isempty(void) const;
+    void                remove(const int& index);
+    void                reserve(const int& num);
+
+    GCTAOnOffObservation* append(const GCTAOnOffObservation& obs);
+
+    //void load(const std::string& filename);
+    void save(const std::string& filename) const;
+    //void read(const GXml& xml);
+    void write(GXml& xml) const;
   
 protected:
     // Protected methods
     void init_members(void);
     void copy_members(const GCTAOnOffObservations& c);
     void free_members(void);
+    int  get_index(const std::string& instrument,
+                       const std::string& id) const;
 
     // Protected data members
     std::string     m_name;          //!< Name
@@ -66,4 +85,4 @@ protected:
 
 };
 
-#endif /* GCTAOnOffObservations_HPP */
+#endif /* GCTAONOFFOBSERVATIONS_HPP */

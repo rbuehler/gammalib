@@ -24,12 +24,13 @@
  * @author Chia-Chun Lu & Christoph Deil
  */
 
-#ifndef GCTAONOffObSERVATION_HPP
-#define GCTAONOffObSERVATION_HPP
+#ifndef GCTAONOFFOBSERVATION_HPP
+#define GCTAONOFFOBSERVATION_HPP
 
 /* __ Includes ___________________________________________________________ */
 #include <string>
 #include "GBase.hpp"
+#include "GPha.hpp"
 
 
 /***********************************************************************//**
@@ -52,7 +53,20 @@ public:
     void        clear(void);
     GCTAOnOffObservation*     clone(void) const;
     std::string print(const GChatter& chatter) const;
-  
+
+    // Getters / Setters
+    void name(const std::string& name) { m_name = name; }
+    virtual std::string name(void) const { return m_name; }
+    void instrument(const std::string& instrument) { m_instrument = instrument; }
+    virtual std::string instrument(void) const { return m_instrument; }
+    void id(const std::string& id) { m_id = id; };
+    const std::string& id(void) const { return m_id; }
+    void spec_on(const GPha& spec_on) { m_spec_on = spec_on; };
+    const GPha& spec_on(void) const { return m_spec_on; }
+    void spec_off(const GPha& spec_off) { m_spec_off = spec_off; };
+    const GPha& spec_off(void) const { return m_spec_off; }
+
+
 protected:
     // Protected methods
     void init_members(void);
@@ -61,7 +75,11 @@ protected:
 
     // Protected data members
     std::string     m_name;         //!< Name
+    std::string   m_instrument;   //!< Instrument name
+    std::string m_id;           //!< Observation identifier
+    GPha m_spec_on;
+    GPha m_spec_off;
 
 };
 
-#endif /* GCTAOnOffObservation_HPP */
+#endif /* GCTAONOFFOBSERVATION_HPP */
