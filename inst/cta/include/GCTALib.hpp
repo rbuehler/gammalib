@@ -49,6 +49,8 @@
 #include "GCTAModelRadialProfile.hpp"
 #include "GCTAModelRadialAcceptance.hpp"
 #include "GCTADir.hpp"
+#include "GCTAOnOffObservation.hpp"
+#include "GCTAOnOffObservations.hpp"
 
 /* __ CTA specific definitions ___________________________________________ */
 #define G_CTA_MJDREF 51544.5                 //!< Reference of CTA time frame
