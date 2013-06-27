@@ -75,6 +75,8 @@ pkginclude_HEADERS = GammaLib.hpp \
                      GSkyDir.hpp \
                      GSkyPixel.hpp \
                      GSkymap.hpp \
+                     GSkyRegion.hpp \
+                     GSkyRegionCircle.hpp \
                      GWcs.hpp \
                      GWcsRegistry.hpp \
                      GWcslib.hpp \
