@@ -1,7 +1,7 @@
 /***************************************************************************
- *                       GClass.hpp - [brief descriptor]                   *
+ *         GCTAOnOffObservation.i  -  CTA On/Off Observation class interface           *
  * ----------------------------------------------------------------------- *
- *  copyright (C) 2010-20xx by [author]                                    *
+ *  copyright (C) 2010-2012 by Michael Mayer                         *
  * ----------------------------------------------------------------------- *
  *                                                                         *
  *  This program is free software: you can redistribute it and/or modify   *
@@ -19,30 +19,20 @@
  *                                                                         *
  ***************************************************************************/
 /**
- * @file GCTAOnOffObservation.hpp
- * @brief Container of CTA OnOff observation
- * @author Chia-Chun Lu & Christoph Deil
+ * @file GCTAOnOffObservation.i
+ * @brief CTA observation class Python interface definition
+ * @author Michael Mayer
  */
-
-#ifndef GCTAONOFFOBSERVATION_HPP
-#define GCTAONOFFOBSERVATION_HPP
-
-/* __ Includes ___________________________________________________________ */
-#include <string>
-#include "GBase.hpp"
-#include "GPha.hpp"
-#include "GArf.hpp"
-#include "GRmf.hpp"
-#include "GCTAEventList.hpp"
-#include "GCTAEventAtom.hpp"
-#include "GCTAObservation.hpp"
-#include "GSkyRegions.hpp"
+%{
+/* Put headers and other declarations here that are needed for compilation */
+#include "GCTAOnOffObservation.hpp"
+%}
 
 
 /***********************************************************************//**
  * @class GCTAOnOffObservation
  *
- * @brief Container of CTA OnOff observation
+ * @brief CTA on/off observation class Python interface
  ***************************************************************************/
 class GCTAOnOffObservation : public GBase {
 
@@ -53,14 +43,10 @@ public:
     GCTAOnOffObservation(const GEbounds& reco_ebounds, const GSkyRegions& on, const GSkyRegions& off);
     virtual ~GCTAOnOffObservation(void);
  
-    // Operators
-    GCTAOnOffObservation& operator= (const GCTAOnOffObservation& c);
-
     // Methods
     void        clear(void);
     GCTAOnOffObservation*     clone(void) const;
-    std::string print(const GChatter& chatter) const;
-
+   
     // Getters / Setters
     void name(const std::string& name) { m_name = name; }
     void instrument(const std::string& instrument) { m_instrument = instrument; }
@@ -81,26 +67,12 @@ public:
 
     void             read(const GXmlElement& xml);
     void             write(GXmlElement& xml) const;
-
-
-protected:
-    // Protected methods
-    void init_members(void);
-    void copy_members(const GCTAOnOffObservation& c);
-    void free_members(void);
-    void compute_arf(const GCTAObservation& obs);
-    void compute_rmf(const GCTAObservation& obs, const GEbounds& true_ebounds);
-
-    // Protected data members
-    std::string     m_name;        	  //!< Name
-    std::string   	m_instrument;   //!< Instrument name
-    std::string 	m_id;          		  //!< Observation identifier
-    GPha 			m_on_spec;
-    GPha 			m_off_spec;
-    GSkyRegions m_on_regions;
-    GSkyRegions m_off_regions;
-    GArf 			m_arf;
-    GRmf			m_rmf;
 };
-
-#endif /* GCTAONOFFOBSERVATION_HPP */
+/***********************************************************************//**
+ * @brief GCTOnOffAObservation class extension
+ ***************************************************************************/
+%extend GCTAOnOffObservation {
+    GCTAOnOffObservation copy() {
+        return (*self);
+    }
+}
