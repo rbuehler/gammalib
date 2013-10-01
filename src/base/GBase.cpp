@@ -58,6 +58,7 @@ std::ostream& operator<<(std::ostream& os, const GBase& base)
 {
     // Write class in output stream
     os << base.print();
+    
 
     // Return output stream
     return os;
